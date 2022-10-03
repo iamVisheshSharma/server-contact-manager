@@ -1,0 +1,34 @@
+### Get all contacts
+GET http://localhost:5000/contact
+
+
+### Get a single contact
+GET http://localhost:5000/contact/c2b1c6b1-d34e-42a0-993d-9b9ff6721912
+
+
+### Add a new contact
+POST http://localhost:5000/contact/add
+Content-Type: application/json
+
+{
+	"name": "Shan Home Decor",
+	"address": "H132, English School Road Baramati-415201 Maharastra",
+	"gstin": "27ASBAS2314A1ZZ",
+	"email": "shahhomedecor@gmail.com",
+	"contact_number": "9087908771",
+	"alt_contact_number": "9087908771"
+}
+
+### Update a contact
+PATCH http://localhost:5000/contact/edit/4cac497a-0620-4fb6-9fe8-90d75461f74e
+Content-Type: application/json
+
+{
+	"name": "Gujju Gamdu"
+}
+
+###
+DELETE http://localhost:5000/contact/delete/c2b1c6b1-d34e-42a0-993d-9b9ff6721912
+
+###
+GET http://localhost:5000/products

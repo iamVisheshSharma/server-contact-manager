@@ -1,0 +1,217 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "NodeJS API project",
+    "version": "1.0.0",
+    "title": "Contact API",
+    "contact": {
+      "email": "visheshsharma01232@gmail.com"
+    }
+  },
+  "schemes": ["http"],
+  "host": "localhost:5000",
+  "basePath": "/contact",
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get all the contacts",
+        "description": "Get all the contacts",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/contactsResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/add": {
+      "post": {
+        "summary": "Save the contact",
+        "description": "Save the contact",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "contact object",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/contactsResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/edit/{uuid}": {
+      "patch": {
+        "summary": "Update the contact",
+        "description": "Update the contact",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "contact uuid that needs to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "contact object",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/contactsResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    },
+    "/delete/{uuid}": {
+      "delete": {
+        "summary": "Delete the contact",
+        "description": "Delete the contact",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "contact uuid that needs to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "contactsResponse": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "ObjectId"
+        },
+				"uuid": {
+					"type": "string"
+				},
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "gstin": {
+          "type": "string"
+        },
+				"email": {
+					"type": "string"
+				},
+				"contact_number": {
+					"type": "string"
+				},
+				"alt_contact_number": {
+					"type": "string"
+				}
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "gstin": {
+          "type": "string"
+        },
+				"email": {
+					"type": "string"
+				},
+				"contact_number": {
+					"type": "string"
+				},
+				"alt_contact_number": {
+					"type": "string"
+				}
+      }
+    },
+    "InvalidResponse": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
