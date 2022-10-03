@@ -135,7 +135,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/todosResponse"
+                "$ref": "#/definitions/contactsResponse"
               }
             }
           },
